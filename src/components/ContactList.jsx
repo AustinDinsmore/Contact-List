@@ -21,7 +21,6 @@ export default function ContactList({setSelectedContactId}) {
   }
   fetchContacts();
 }, []);
-console.log(contacts)
   return (
     <table>
       <thead>
