@@ -4,12 +4,10 @@ import { useEffect } from "react"
 export default function SelectedContact({selectedContactId, setSelectedContactId}){
     const [contact, setContact] = useState({})
     useEffect(() => {  async function fetchContact(){
-        try { console.log(selectedContactId)
+        try { 
           const response = await fetch(`https://fsa-jsonplaceholder-69b5c48f1259.herokuapp.com/users/${selectedContactId}`);
           const result = await response.json();
-          console.log(result)
           setContact(result)
-          console.log(setContact)
         } catch (error) {
           console.error(error);
         }
@@ -17,6 +15,25 @@ export default function SelectedContact({selectedContactId, setSelectedContactId
       fetchContact();
     }, []);
     return (
-      <button onClick={() => setSelectedContactId(null)}>Click Me</button>
+    <><table>
+        <tbody>
+          <tr>
+            <td>{contact.name}</td>
+          </tr>
+          <tr>
+            <td>{contact.username}</td>
+          </tr>
+          <tr>
+            <td>{contact.email}</td>
+          </tr>
+          <tr>
+            <td>{contact.phone}</td>
+          </tr>
+          <tr>
+            <td>{contact.website}</td>
+          </tr>
+        </tbody>
+      </table><button onClick={() => setSelectedContactId(null)}>Return</button></> 
+      
     )
 }
